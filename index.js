@@ -3,6 +3,16 @@ function changeText() {
     text.textContent = 'They\'re the season for the reason.';
 }
 
-const button = document.querySelector('button');
+function sub() {
+    const title = document.querySelector('#first');
+    const text = document.querySelector('#box').value;
+    title.textContent = text;
+}
+
+const button = document.querySelector('#change');
 
 button.addEventListener('click', changeText);
+
+const submit = document.querySelector('#submit');
+
+submit.addEventListener('click', sub);

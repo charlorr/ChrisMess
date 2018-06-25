@@ -12,7 +12,7 @@
 
 * Add a form to the page.
 * Add a text input to the form.
-* When the form is _submitted_, update the heading with tthe text that you type in the text input.
+* When the form is _submitted_, update the heading with the text that you type in the text input.
 
 ### Super Mega Bonus Credit Hyper Fighting
 
