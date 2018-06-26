@@ -1,11 +1,10 @@
 const changeText = function() {
-    clickMe.textContent = ":)";
+	clickMe.textContent = ":)";
 }
 
-const add = function(e) {
+const addTrack = function(e) {
     e.preventDefault();
     const f = e.target;
-
     const artist = f.artist.value;
     const title = f.title.value;
     const track = document.createElement('li');
@@ -13,7 +12,7 @@ const add = function(e) {
     list.appendChild(track);
 }
 // Some constants
-const form = document.querySelector('form');
+const form = document.querySelector('form#mixer');
 const list = document.querySelector('#list');
 
 // Lonely button functionality
@@ -21,5 +20,4 @@ const clickMe = document.querySelector('button');
 clickMe.addEventListener('click', changeText);
 
 // Add to mix button functionality
-const addButton = document.querySelector('#submit');
-addButton.addEventListener('click', add);
+form.addEventListener('submit', addTrack);
