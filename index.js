@@ -1,18 +1,25 @@
-function changeText() {
-    const text = document.querySelector('#second');
-    text.textContent = 'They\'re the season for the reason.';
+const changeText = function() {
+    clickMe.textContent = ":)";
 }
 
-function sub() {
-    const title = document.querySelector('#first');
-    const text = document.querySelector('#box').value;
-    title.textContent = text;
+const add = function(e) {
+    e.preventDefault();
+    const f = e.target;
+
+    const artist = f.artist.value;
+    const title = f.title.value;
+    const track = document.createElement('li');
+    track.textContent = artist;
+    list.appendChild(track);
 }
+// Some constants
+const form = document.querySelector('form');
+const list = document.querySelector('#list');
 
-const button = document.querySelector('#change');
+// Lonely button functionality
+const clickMe = document.querySelector('button');
+clickMe.addEventListener('click', changeText);
 
-button.addEventListener('click', changeText);
-
-const submit = document.querySelector('#submit');
-
-submit.addEventListener('click', sub);
+// Add to mix button functionality
+const addButton = document.querySelector('#submit');
+addButton.addEventListener('click', add);

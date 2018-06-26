@@ -6,22 +6,24 @@
     <title>ChrisMess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
 </head>
 <body>
-    <h1 id="first">Merry ChrisMess!!</h1>
+    <h1 id="first">Groovy Tunez 5000</h1>
 
-    <h1 id="second">They're the reason for the season.</h1>
-
-    <button id="change">Click meeee</button>
-
-    <p></p>
+    <p id="descript">The playlist-maker of the future.</p>
     
+    <button id="change">Click meeee (i'm lonely)</button>
+
+    <p id="instruct">Add sickest beats:</p>
+
     <form onsubmit="return false">
-    <input type="text" id="box">
-    <input type="submit" id="submit" value="Submit">
+    <input type="text" name="artist" placeholder="Artist" autofocus>
+    <input type="text" name="title" placeholder="Song Title">    
+    <input type="button" id="submit" value="Add to mix">
     </form>
 
-    <ul id="movies"></ul>
+    <ol id="list"></ol>
 
     <script src="index.js"></script>
 </body>
