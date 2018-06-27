@@ -1,23 +1,49 @@
-const changeText = function() {
-	clickMe.textContent = ":)";
+class Applet {
+	constructor(){
+		const form = document.querySelector('form#mixer');
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			this.handleSubmit(e);
+		});
+	}
+	
+	renderProperty(name, value) {
+		const span = document.createElement('span');
+		span.classList.add(name);
+		span.textContent = value;
+		return span;
+	}
+	
+	renderItem(track) {
+		const item = document.createElement('li');
+		item.classList.add('track');
+		
+		const props = Object.keys(track);
+		props.forEach((propName) => {
+			const span = this.renderProperty(propName, track[propName]);
+			item.appendChild(span);
+		});
+		return item;
+	}
+	
+	handleSubmit(e) {
+		const f = e.target;
+	
+		// Create track object
+		const track = {
+			artist: f.artist.value,
+			title: f.title.value,
+		}
+		
+		const item = this.renderItem(track);
+
+		const list = document.querySelector('#list');
+		list.appendChild(item);
+	
+		// Reset for next input
+		f.reset();
+		f.artist.focus();
+	}
 }
 
-const addTrack = function(e) {
-    e.preventDefault();
-    const f = e.target;
-    const artist = f.artist.value;
-    const title = f.title.value;
-    const track = document.createElement('li');
-    track.textContent = artist;
-    list.appendChild(track);
-}
-// Some constants
-const form = document.querySelector('form#mixer');
-const list = document.querySelector('#list');
-
-// Lonely button functionality
-const clickMe = document.querySelector('button');
-clickMe.addEventListener('click', changeText);
-
-// Add to mix button functionality
-form.addEventListener('submit', addTrack);
+const app = new Applet();

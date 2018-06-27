@@ -31,3 +31,21 @@
 ### Super Mega Bonus Credit
 
 * Use more than one function.
+
+## Day 3 Homework
+
+* In addition to building a list item and addin git to the DOM (as we are now), also store each flick in an array.
+
+### Bonus Credit
+
+* Add a _delete_ button to each list item that removes it from the list.
+
+### Super Mega Bonus Credit
+
+* Remove the flick from the array as well.
+
+### Super Mega Bonus Credit Hyper Fighting
+
+* Add a _favorite_ button to each flick as well that lets you mark your favorites. 
+* Display favorites differntly.
+* Be sure to the favorites are recorded appropriately in some way. 
