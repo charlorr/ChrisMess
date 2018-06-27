@@ -27,6 +27,10 @@ class Applet {
 	}
 	
 	handleSubmit(e) {
+		if (document.querySelector('#mixName').textContent == "") {
+			document.querySelector('#mixName').textContent = `My Mix (${this.getSeason()})`;
+		}
+		
 		const f = e.target;
 	
 		// Create track object
@@ -43,6 +47,16 @@ class Applet {
 		// Reset for next input
 		f.reset();
 		f.artist.focus();
+	}
+	
+	displayTitle() {
+		
+	}
+	
+	getSeason() {
+		const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+		const date = new Date();
+		return `${seasons[date.getMonth() % 3]} \'${date.getFullYear().toString().slice(-2)}`;
 	}
 }
 

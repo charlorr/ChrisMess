@@ -9,20 +9,24 @@
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Shrikhand" rel="stylesheet">
 </head>
 <body>
-    <h1 id="first">Groovy Tunez 5000</h1>
+    <div>
+		<h1 id="first">Groovy Tunez 5000</h1>
 
-    <p id="descript">The playlist-maker of the future.</p>
+		<p id="descript">The playlist-maker of the future.</p>
 
-    <p id="instruct">Add sickest beats:</p>
+		<p id="instruct">Add sickest beats:</p>
 
-    <form id="mixer">
-    <input type="text" name="artist" placeholder="Artist" autofocus>
-    <input type="text" name="title" placeholder="Song Title">    
-    <button type="submit" id="submit">Add to mix</button>
-    </form>
+		<form id="mixer">
+			<input type="text" name="artist" placeholder="Artist" autofocus>
+			<input type="text" name="title" placeholder="Song Title">    
+			<button type="submit" id="submit">Add to mix</button>
+		</form>
 
-    <ol id="list"></ol>
+		<p id="mixName" class="mix"></p>
+		
+		<ol class="mix" id="list"></ol>
 
-    <script src="index.js"></script>
+		<script src="index.js"></script>
+	</div>
 </body>
 </html>

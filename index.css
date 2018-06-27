@@ -25,8 +25,9 @@ body {
 	margin: 0;
 }
 
-li {
+.mix {
 	font-family: 'Permanent Marker', cursive;
 	color: black;
 	font-size: 1.75rem;
+	!important
 }
