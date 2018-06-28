@@ -1,10 +1,12 @@
 class Applet {
 	constructor(){
 		const form = document.querySelector('form#mixer');
+		this.tracks = [];
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
 			this.handleSubmit(e);
 		});
+		
 	}
 	
 	renderProperty(name, value) {
@@ -18,15 +20,19 @@ class Applet {
 		const item = document.createElement('li');
 		item.classList.add('track');
 		
+		// Add divider to spans to be added
 		const props = Object.keys(track);
+		props.splice(props.indexOf('title'), 0, 'divider');
 		props.forEach((propName) => {
-			const span = this.renderProperty(propName, track[propName]);
+			const value = propName == 'divider' ? '~' : track[propName];
+			const span = this.renderProperty(propName, value);
 			item.appendChild(span);
 		});
 		return item;
 	}
 	
 	handleSubmit(e) {
+		// Initialize playlist
 		if (document.querySelector('#mixName').textContent == "") {
 			document.querySelector('#mixName').textContent = `My Mix (${this.getSeason()})`;
 		}
@@ -38,6 +44,7 @@ class Applet {
 			artist: f.artist.value,
 			title: f.title.value,
 		}
+		this.tracks.push(track);
 		
 		const item = this.renderItem(track);
 
@@ -49,9 +56,6 @@ class Applet {
 		f.artist.focus();
 	}
 	
-	displayTitle() {
-		
-	}
 	
 	getSeason() {
 		const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
