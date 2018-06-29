@@ -34,7 +34,7 @@ class Applet {
 			this.tracks[img.id].name ? this.fillIcon(img, name) : this.unfillIcon(img, name);
 		});
 		img.addEventListener('click', (e) => {
-			console.log('lol');
+			this.tracks[img.id].name = this.tracks[img.id].name ? false : true;
 		});
 		element.appendChild(img);
 	}
