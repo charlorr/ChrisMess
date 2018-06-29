@@ -64,6 +64,10 @@ img {
 	width: 24px;
 }
 
+.del::hover {
+	
+}
+
 /* cd stuff
 font-family: 'Permanent Marker', cursive;
 font-size: 1.75 rem;

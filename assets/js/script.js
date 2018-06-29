@@ -13,17 +13,28 @@ class Applet {
 	
 	//deleteTrack();
 	
+	fillIcon(img, name) {
+		img.setAttribute('src', name == 'del' ? 'assets/img/delete.svg' : 'assets/img/star.svg');
+	}
+	
+	unfillIcon(img, name) {
+		img.setAttribute('src', name == 'del' ? 'assets/img/delete_outline.svg' : 'assets/img/star_border.svg');
+	}
+	
 	insertImg(element, name) {
-		//document.querySelector('.del').src = source;
 		const img = document.createElement('img');
 		img.classList.add(name);
 		img.setAttribute('src', name == 'del' ? 'assets/img/delete_outline.svg' : 'assets/img/star_border.svg');
 		img.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
+		img.setAttribute('id', this.tracks.length - 1);
 		img.addEventListener('mouseover', (e) => {
-			img.setAttribute('src', name == 'del' ? 'assets/img/delete.svg' : 'assets/img/star.svg');
+			this.tracks[img.id].name ? this.unfillIcon(img, name) : this.fillIcon(img, name);
 		});
 		img.addEventListener('mouseout', (e) => {
-			img.setAttribute('src', name == 'del' ? 'assets/img/delete_outline.svg' : 'assets/img/star_border.svg');
+			this.tracks[img.id].name ? this.fillIcon(img, name) : this.unfillIcon(img, name);
+		});
+		img.addEventListener('click', (e) => {
+			console.log('lol');
 		});
 		element.appendChild(img);
 	}
@@ -49,8 +60,10 @@ class Applet {
 		//props.splice(props.indexOf('title'), 0, 'divider');
 		props.forEach((propName) => {
 			//const value = propName == 'divider' ? '~' : track[propName];
-			const element = this.renderProperty(propName, track[propName]);
-			item.appendChild(element);
+			if (propName != 'id') {
+				const element = this.renderProperty(propName, track[propName]);
+				item.appendChild(element);	
+			}
 		});
 		return item;
 	} 
@@ -65,6 +78,7 @@ class Applet {
 	
 		// Create track object
 		const track = {
+			id: this.tracks.length,
 			fav: false,
 			del: false,
 			artist: f.artist.value,
