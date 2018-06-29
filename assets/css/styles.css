@@ -2,8 +2,17 @@
 	--main-accent: #98ff98;
 }
 
+.column {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	background-color: lightblue;
+	width: 50vw;
+	min-width: 440px;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Shrikhand', cursive;
+    font-family: 'Permanent Marker', cursive;
     color: var(--main-accent);
     background-color: black;
 }
@@ -16,20 +25,35 @@ h1 {
 	overflow: 0;
 }
 
-button {
-    
-}
-
-body {
-    font-family: Helvetica, Arial, sans-serif;
+button, body, ::placeholder {
+    font-family: 'Share Tech Mono', monospace;
 	margin: 0;
 }
 
+.fields {
+	float: left;
+}
+
 .mix {
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Share Tech Mono', monospace;
 	color: black;
-	font-size: 1.75rem;
+	border-collapse: collapse;
 	!important
+}
+
+tr {
+	list-style-type: none;
+	text-align: left;
+	background-color: black;
+	color: var(--main-accent);
+}
+
+tr:nth-child(even) {
+    background-color: #212121;
+}
+
+img {
+	fill: var(--main-accent);
 }
 
 .del {
@@ -39,3 +63,8 @@ body {
 .fav {
 	
 }
+
+/* cd stuff
+font-family: 'Permanent Marker', cursive;
+font-size: 1.75 rem;
+

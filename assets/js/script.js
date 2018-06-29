@@ -13,38 +13,31 @@ class Applet {
 	sourceImg(element, source) {
 		//document.querySelector('.del').src = source;
 		element.setAttribute('src', source);
+		element.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
 	}
 	
 	renderProperty(name, value) {
-		const type = name == 'fav' || name == 'del' ? 'img' : 'span';
+		const type = name == 'fav' || name == 'del' ? 'img' : 'td';
 		const element = document.createElement(type);
 		element.classList.add(name);
-		if (type == 'span') {
+		if (type == 'td') {
 			element.textContent = value;
-		} 
-		else if (name == 'del') {
-			this.sourceImg(element, 'assets/img/round-delete-24px.svg');
 		} else {
-			this.sourceImg(element, 'assets/img/round-star_border-24px.svg');
+			this.sourceImg(element, name == 'del' ? 'assets/img/sharp-delete_outline-24px.svg' : 'assets/img/sharp-star_border-24px.svg');
 		}
 		return element;
 	}
 	
 	renderItem(track) {
-		const item = document.createElement('li');
+		const item = document.createElement('tr');
 		item.classList.add('track');
 		
 		// Add divider to spans to be added
 		const props = Object.keys(track);
-		props.splice(props.indexOf('title'), 0, 'divider');
+		//props.splice(props.indexOf('title'), 0, 'divider');
 		props.forEach((propName) => {
-			const value = propName == 'divider' ? '~' : track[propName];
-			const element = this.renderProperty(propName, value);
-			
-			// Render images
-			/*if (element.nodeName == 'IMG') {
-				this.sourceImg(name, element.className == 'del' ? 'assets/img/round-delete-24px.svg' : 'assets/img/round-star_border-24px.svg');
-			}*/
+			//const value = propName == 'divider' ? '~' : track[propName];
+			const element = this.renderProperty(propName, track[propName]);
 			item.appendChild(element);
 		});
 		return item;
@@ -53,7 +46,7 @@ class Applet {
 	handleSubmit(e) {
 		// Initialize playlist
 		if (document.querySelector('#mixName').textContent == "") {
-			document.querySelector('#mixName').textContent = `My Mix (${this.getSeason()})`;
+			document.querySelector('#mixName').textContent = `My Mix [${this.getSeason()}]`;
 		}
 		
 		const f = e.target;
@@ -69,8 +62,8 @@ class Applet {
 		
 		const item = this.renderItem(track);
 
-		const list = document.querySelector('#list');
-		list.appendChild(item);
+		const table = document.querySelector('#tabe');
+		table.appendChild(item);
 	
 		// Reset for next input
 		f.reset();

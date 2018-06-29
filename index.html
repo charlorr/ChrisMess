@@ -6,25 +6,26 @@
     <title>ChrisMess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/styles.css" />
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Shrikhand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Share+Tech+Mono|Shrikhand" rel="stylesheet">
 </head>
 <body>
-    <div>
+    <header>
 		<h1 id="first">Groovy Tunez 5000</h1>
+	</header>
+	
+	<div class="column">
 
-		<p id="descript">The playlist-maker of the future.</p>
-
-		<p id="instruct">Add sickest beats:</p>
+		<p id="descript">The playlist-generator of the future.</p>
 
 		<form id="mixer">
-			<input type="text" name="artist" placeholder="Artist" autofocus>
-			<input type="text" name="title" placeholder="Song Title">    
-			<button type="submit" id="submit">Add to mix</button>
+			<input class="fields" type="text" name="artist" placeholder="Artist" autofocus>
+			<input class="fields" type="text" name="title" placeholder="Song Title">    
+			<button class="fields" type="submit" id="submit">Add to mix</button>
 		</form>
 
 		<p id="mixName" class="mix"></p>
 		
-		<ul class="mix" id="list"></ul>
+		<table class="mix" id="tabe"></table>
 
 		<script src="assets/js/script.js"></script>
 	</div>
