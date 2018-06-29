@@ -9,13 +9,22 @@ class Applet {
 		
 	}
 	
-	// cla = class
+	//favoriteTrack();
+	
+	//deleteTrack();
+	
 	insertImg(element, name) {
 		//document.querySelector('.del').src = source;
 		const img = document.createElement('img');
 		img.classList.add(name);
-		img.setAttribute('src', name == 'del' ? 'assets/img/sharp-delete_outline-24px.svg' : 'assets/img/sharp-star_border-24px.svg');
+		img.setAttribute('src', name == 'del' ? 'assets/img/delete_outline.svg' : 'assets/img/star_border.svg');
 		img.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
+		img.addEventListener('mouseover', (e) => {
+			img.setAttribute('src', name == 'del' ? 'assets/img/delete.svg' : 'assets/img/star.svg');
+		});
+		img.addEventListener('mouseout', (e) => {
+			img.setAttribute('src', name == 'del' ? 'assets/img/delete_outline.svg' : 'assets/img/star_border.svg');
+		});
 		element.appendChild(img);
 	}
 	
