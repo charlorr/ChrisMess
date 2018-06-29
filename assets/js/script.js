@@ -10,7 +10,7 @@ class Applet {
 	}
 	
 	toSpans() {
-		alert('This method is currently under construction :)');
+		alert('This feature is currently under construction :)');
 	}
 	
 	burnButton() {
