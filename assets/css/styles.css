@@ -6,7 +6,6 @@
 	display: flex;
 	flex-direction: column;
 	margin: auto;
-	background-color: lightblue;
 	width: 50vw;
 	min-width: 440px;
 }
@@ -52,16 +51,17 @@ tr:nth-child(even) {
     background-color: #212121;
 }
 
+td {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
 img {
 	fill: var(--main-accent);
 }
 
-.del {
-	
-}
-
-.fav {
-	
+.del, .fav {
+	width: 24px;
 }
 
 /* cd stuff

@@ -10,20 +10,23 @@ class Applet {
 	}
 	
 	// cla = class
-	sourceImg(element, source) {
+	insertImg(element, name) {
 		//document.querySelector('.del').src = source;
-		element.setAttribute('src', source);
-		element.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
+		const img = document.createElement('img');
+		img.classList.add(name);
+		img.setAttribute('src', name == 'del' ? 'assets/img/sharp-delete_outline-24px.svg' : 'assets/img/sharp-star_border-24px.svg');
+		img.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
+		element.appendChild(img);
 	}
 	
 	renderProperty(name, value) {
-		const type = name == 'fav' || name == 'del' ? 'img' : 'td';
-		const element = document.createElement(type);
+		//const type = name == 'fav' || name == 'del' ? 'img' : 'td';
+		const element = document.createElement('td');
 		element.classList.add(name);
-		if (type == 'td') {
+		if (name != 'del' && name != 'fav') {
 			element.textContent = value;
 		} else {
-			this.sourceImg(element, name == 'del' ? 'assets/img/sharp-delete_outline-24px.svg' : 'assets/img/sharp-star_border-24px.svg');
+			this.insertImg(element, name);
 		}
 		return element;
 	}
@@ -78,3 +81,39 @@ class Applet {
 }
 
 const app = new Applet();
+
+/* OLD CODE
+
+sourceImg(element, source) {
+		//document.querySelector('.del').src = source;
+		element.setAttribute('src', source);
+		element.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
+	}
+	
+	renderProperty(name, value) {
+		const type = name == 'fav' || name == 'del' ? 'img' : 'td';
+		const element = document.createElement(type);
+		element.classList.add(name);
+		if (type == 'td') {
+			element.textContent = value;
+		} else {
+			this.sourceImg(element, name == 'del' ? 'assets/img/sharp-delete_outline-24px.svg' : 'assets/img/sharp-star_border-24px.svg');
+		}
+		return element;
+	}
+	
+	renderItem(track) {
+		const item = document.createElement('tr');
+		item.classList.add('track');
+		
+		// Add divider to spans to be added
+		const props = Object.keys(track);
+		//props.splice(props.indexOf('title'), 0, 'divider');
+		props.forEach((propName) => {
+			//const value = propName == 'divider' ? '~' : track[propName];
+			const element = this.renderProperty(propName, track[propName]);
+			item.appendChild(element);
+		});
+		return item;
+	} 
+*/
