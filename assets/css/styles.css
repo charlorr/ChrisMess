@@ -68,6 +68,10 @@ img {
 	
 }
 
+.burn {
+	float: right;
+}
+
 /* cd stuff
 font-family: 'Permanent Marker', cursive;
 font-size: 1.75 rem;

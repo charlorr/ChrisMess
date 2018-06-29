@@ -9,9 +9,37 @@ class Applet {
 		
 	}
 	
-	//favoriteTrack();
+	toSpans() {
+		alert('This method is currently under construction :)');
+	}
 	
-	//deleteTrack();
+	burnButton() {
+		const burn = document.createElement('button');
+		burn.textContent = "Burn it!";
+		burn.classList.add('burn');
+		burn.addEventListener('click', (e) => {
+			// Load image
+			// Overlay formatted text
+			this.toSpans();
+		});
+		document.querySelector('.mix').appendChild(burn);
+	}
+	
+	deleteTrack(id) {
+		this.tracks.splice(id, 1);
+		document.getElementById(id).setAttribute('id', '-1');
+		// Adjust indexes
+		if (id != this.tracks.length) {
+			var element = {};
+			for (var i = parseInt(id) + 1; i < this.tracks.length + 1; i++) {
+				document.getElementById(`${i}`).setAttribute('id', i - 1);
+				document.getElementById(`${i}`).setAttribute('id', i - 1);
+				document.getElementById(`${i}`).setAttribute('id', i - 1);
+			}	
+		}
+		document.getElementById('-1').parentNode.removeChild(document.getElementById('-1'));
+		
+	}
 	
 	fillIcon(img, name) {
 		img.setAttribute('src', name == 'del' ? 'assets/img/delete.svg' : 'assets/img/star.svg');
@@ -27,14 +55,18 @@ class Applet {
 		img.setAttribute('src', name == 'del' ? 'assets/img/delete_outline.svg' : 'assets/img/star_border.svg');
 		img.setAttribute('alt', name == 'del' ? 'delete' : 'favorite');
 		img.setAttribute('id', this.tracks.length - 1);
+		
 		img.addEventListener('mouseover', (e) => {
+			// When del / fav is true, unfill icon; when false, fill icon
 			this.tracks[img.id].name ? this.unfillIcon(img, name) : this.fillIcon(img, name);
 		});
 		img.addEventListener('mouseout', (e) => {
+			// When del / fav is true, fill icon; when false, unfill icon
 			this.tracks[img.id].name ? this.fillIcon(img, name) : this.unfillIcon(img, name);
 		});
 		img.addEventListener('click', (e) => {
 			this.tracks[img.id].name = this.tracks[img.id].name ? false : true;
+			if (name == 'del') {this.deleteTrack(img.id);}
 		});
 		element.appendChild(img);
 	}
@@ -53,6 +85,7 @@ class Applet {
 	
 	renderItem(track) {
 		const item = document.createElement('tr');
+		item.setAttribute('id', this.tracks.length - 1);
 		item.classList.add('track');
 		
 		// Add divider to spans to be added
@@ -72,6 +105,7 @@ class Applet {
 		// Initialize playlist
 		if (document.querySelector('#mixName').textContent == "") {
 			document.querySelector('#mixName').textContent = `My Mix [${this.getSeason()}]`;
+			this.burnButton();
 		}
 		
 		const f = e.target;
