@@ -1,4 +1,9 @@
-# ChrisMess
+# Groovy Tunez 5000
+
+This web app was created for Xtern Bootcamp (Summer of 2018), and includes the features required by the homeworks below, in addition to:
+
+* Input validation (in developement`).
+* Displaying songs as a CD "mixtape".
 
 ## Day 1 Homework
 
@@ -14,8 +19,7 @@
 * Add a text input to the form.
 * When the form is _submitted_, update the heading with the text that you type in the text input.
 
-### Super Mega Bonus Credit Hyper Fighting
-
+### Super Mega Bonus Credit Hyper Fighting 
 * Make sure it works when you press _enter_ on the keyboard, not just when you click the button.
 
 ## Day 2 Homework
