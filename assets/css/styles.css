@@ -45,6 +45,7 @@ tr {
 	text-align: left;
 	background-color: black;
 	color: var(--main-accent);
+        height: 33.6px;
 }
 
 tr:nth-child(even) {

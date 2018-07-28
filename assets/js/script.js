@@ -161,6 +161,7 @@ class Applet {
     getSeason() {
         const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
         const date = new Date();
+        console.log(date.getMonth);
         return `${seasons[date.getMonth() % 3]} \'${date.getFullYear().toString().slice(-2)}`;
     }
 }
