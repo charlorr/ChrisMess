@@ -1,12 +1,40 @@
 class Applet {
     constructor(){
         const form = document.querySelector('form#mixer');
+        
         this.tracks = [];
+        this.load();
+
         form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 this.handleSubmit(e);
                 });
 
+    }
+
+    save() {
+        // Store tracks in el local storage
+        localStorage.setItem('tracks', JSON.stringify(this.tracks));
+    }
+
+    load() {
+        // Load tracks from local storage
+        const tracks = JSON.parse(localStorage.getItem('tracks'));
+        
+        if (tracks) {
+            // Add each track to the UI
+            tracks.forEach(track => this.addTrack(track));
+        }
+    }
+    
+    addTrack(track) {
+        this.tracks.push(track);
+
+        const item = this.renderItem(track);
+
+        // Add it to the DOMMMMM
+        const table = document.querySelector('#tabe');
+        table.appendChild(item);
     }
 
     toSpans() {
@@ -38,7 +66,7 @@ class Applet {
             }	
         }
         document.getElementById('-1').parentNode.removeChild(document.getElementById('-1'));
-
+        this.save();
     }
 
     fillIcon(img, name) {
@@ -95,22 +123,24 @@ class Applet {
         const props = Object.keys(track);
         //props.splice(props.indexOf('title'), 0, 'divider');
         props.forEach((propName) => {
-                //const value = propName == 'divider' ? '~' : track[propName];
-                if (propName != 'id') {
+            //const value = propName == 'divider' ? '~' : track[propName];
+            if (propName != 'id') {
                 const element = this.renderProperty(propName, track[propName]);
                 item.appendChild(element);	
-                }
-                });
+            }
+        });
         return item;
     } 
 
     handleSubmit(e) {
         const f = e.target;
 
+        // If nothing is entered, don't do nuthin'
         if (f.artist.value == '' && f.title.value == '') {
             return;
         }
 
+        // Fill out both boxes biiiiitch
         if (f.artist.value == '' || f.title.value == '') {
             const empty = f.artist.value == '' ? f.artist : f.title;
             const stringSub = f.artist.value == '' ? 'n artist' : ' song title';
@@ -125,18 +155,8 @@ class Applet {
 
             // Render 'burn it' button
             this.burnButton();
-
-            // Add header
-            const header = {
-                id: -1,
-                sp1: false,
-                sp2: false,
-                artist: 'Artist',
-                title: 'Title',
-            }
-            // If I need to re-render on refresh, make header part of tracks.
-            document.querySelector('#tabe').appendChild(this.renderItem(header));
-        }
+            this.loadHeader();
+       }
 
         // Create track object
         const track = {
@@ -146,16 +166,24 @@ class Applet {
             artist: f.artist.value,
             title: f.title.value,
         }
-        this.tracks.push(track);
-
-        const item = this.renderItem(track);
-
-        const table = document.querySelector('#tabe');
-        table.appendChild(item);
+        this.addTrack(track);
+        this.save();
 
         // Reset for next input
         f.reset();
         f.artist.focus();
+    }
+
+    loadHeader() {
+        const header = {
+            id: -2,
+            sp1: false,
+            sp2: false,
+            artist: 'Artist',
+            title: 'Title',
+        }
+        document.querySelector('#tabe').appendChild(this.renderItem(header));
+ 
     }
 
     getSeason() {
